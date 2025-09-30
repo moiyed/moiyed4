@@ -2,14 +2,15 @@ from dotenv import load_dotenv
 load_dotenv()
 import os
 from twelvedata import TDClient
-from telegram.ext import Updater, CommandHandler
+from telegram.ext import Updater, CommandHandler, Queue  # أضفنا Queue
 
 api_key = os.environ.get('TWELVE_DATA_API_KEY')
 risk_percent = os.environ.get('RISK_PERCENT', '1')
 telegram_token = os.environ.get('TELEGRAM_TOKEN')
 
 td = TDClient(apikey=api_key)
-updater = Updater(telegram_token)
+update_queue = Queue()  # أنشئ كائن Queue
+updater = Updater(telegram_token, update_queue=update_queue)  # أضف update_queue
 dp = updater.dispatcher
 subscribed_users = {}
 
