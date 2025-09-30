@@ -1,0 +1,8 @@
+requests
+python-telegram-bot
+ta-lib  # للمؤشرات مثل RSI, MACD
+pandas
+numpy
+twelvedata==1.2.25
+python-dotenv==1.1.1
+matplotlib
