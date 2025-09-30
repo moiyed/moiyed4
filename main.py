@@ -33,4 +33,4 @@ async def check_profitable_trade(context: ContextTypes.DEFAULT_TYPE):
             await context.bot.send_message(chat_id=chat_id, text=f"خطأ: {e}")
 
 application.add_handler(CommandHandler("start", start))
-application.run_polling(allowed_updates=Update.ALL_TYPES)
+application.run_polling(poll_interval=0.5, timeout=10, drop_pending_updates=True)  # تحسينات لـ polling
